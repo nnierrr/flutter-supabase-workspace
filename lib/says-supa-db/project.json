@@ -1,0 +1,57 @@
+{
+  "name": "says-supa-db",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "lib/says-supa-db/src",
+  "projectType": "library",
+  "targets": {
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+      "commands": [
+        "npx supabase start"
+      ],
+      "cwd": "lib/says-supa-db" 
+      }
+    },
+    "stop": {
+      "executor": "nx:run-commands",
+      "options": {
+      "commands": [
+        "npx supabase stop"
+      ],
+      "cwd": "lib/says-supa-db" 
+      }
+    },
+    "status": {
+      "executor": "nx:run-commands",
+      "options": {
+      "commands": [
+        "npx supabase status"
+      ],
+      "cwd": "libs/says-supa-db" 
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["lib/says-supa-db/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "lib/says-supa-db/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
